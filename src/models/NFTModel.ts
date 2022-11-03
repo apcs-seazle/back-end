@@ -5,7 +5,7 @@ const nftSchema = new mongoose.Schema({
   fileUrl: { type: String, required: true },
   name: { type: String, required: true },
   description: { type: String },
-  collection: { type: Schema.Types.ObjectId },
+  collectionId: { type: Schema.Types.ObjectId },
 });
 
 const NFTModel = mongoose.model("NFT", nftSchema);

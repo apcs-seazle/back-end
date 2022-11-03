@@ -20,7 +20,7 @@ server.listen(process.env["PORT"], () => {
 
   mongoose.connect(process.env["DB_URI"]!, (err) => {
     if (err) {
-      console.log("connect to db failed");
+      console.log("connect to db failed" + err["message"]);
       return process.exit(1);
     }
 
