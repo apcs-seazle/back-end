@@ -15,7 +15,7 @@ nftRoute.put(
     fileUrl: Joi.string().required(),
     name: Joi.string().required(),
     description: Joi.string(),
-    collection: Joi.string(),
+    collectionId: Joi.string(),
   }),
   async (req, res) => {
     try {
@@ -52,11 +52,11 @@ nftRoute.post(
     fileUrl: Joi.string(),
     name: Joi.string(),
     description: Joi.string(),
-    collection: Joi.string(),
+    collectionId: Joi.string(),
   }),
   async (req, res) => {
     try {
-      const clt = req.body["collection"];
+      const clt = req.body["collectionId"];
       if (clt) {
         const nft = await NFTModel.findById(req.params.id);
 
@@ -85,6 +85,10 @@ nftRoute.post(
 nftRoute.delete("/:id", async (req, res) => {
   try {
     const nft = await NFTModel.findByIdAndDelete(req.params.id);
+
+    await CollectionModel.findByIdAndUpdate(nft?.collectionId, {
+      $pull: { nfts: nft?._id },
+    });
 
     return res.json(successResponse({ nft }));
   } catch (err: any) {
