@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   bio: { type: String },
   email: { type: String },
   profilePicUrl: { type: String },
+  address: {type: String}
 });
 
 export default mongoose.model("User", userSchema);
