@@ -10,7 +10,7 @@ nftRoute.put("/create", async (req, res) => {
     log("create nft", req.body);
 
     const nft = await nftModel.create(req.body);
-    res.json(nft.toObject);
+    res.json(nft);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -27,6 +27,30 @@ nftRoute.put("/create-many", async (req, res) => {
   }
 });
 
+nftRoute.get("/:id", async (req, res) => {
+  try {
+    log("get nft", req.params.id);
+
+    const nft = await nftModel.findById(req.params.id);
+    res.json(nft);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+nftRoute.get("/", async (req, res) => {
+  try {
+    log("get many nfts", req.body);
+
+    const nfts = await nftModel.find({
+      _id: { $in: req.body },
+    });
+    res.json(nfts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 nftRoute.post("/update/:id", async (req, res) => {
   try {
     log("update nft", req.params.id, req.body);
@@ -34,7 +58,7 @@ nftRoute.post("/update/:id", async (req, res) => {
     const nft = await nftModel.findByIdAndUpdate(req.params.id, req.body, {
       returnDocument: "after",
     });
-    res.json(nft?.toObject);
+    res.json(nft);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -45,7 +69,7 @@ nftRoute.delete("/delete/:id", async (req, res) => {
     log("delete nft", req.params.id);
 
     const nft = await nftModel.findByIdAndDelete(req.params.id);
-    res.json(nft?.toObject);
+    res.json(nft);
   } catch (err) {
     res.status(500).json(err);
   }
