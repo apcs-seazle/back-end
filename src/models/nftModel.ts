@@ -6,6 +6,7 @@ const nftSchema = new mongoose.Schema({
   description: { type: String },
   network: { type: String, required: true },
   price: { type: Number },
+  ownerAddress: { type: String },
 });
 
 export default mongoose.model("NFT", nftSchema);
