@@ -1,5 +1,9 @@
 # SEAZLE API
 
+## Postman Usage
+
+Import postman.json to Postman.
+
 ## Debug
 
 ```bash
