@@ -69,12 +69,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{API_URL}}/nft/63969214340bc68467e1c34a",
+							"raw": "{{API_URL}}/nft/get/63969214340bc68467e1c34a",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"nft",
+								"get",
 								"63969214340bc68467e1c34a"
 							]
 						}
@@ -99,12 +100,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/nft",
+							"raw": "{{API_URL}}/nft/get-many",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"nft"
+								"nft",
+								"get-many"
 							]
 						}
 					},
@@ -152,6 +154,24 @@
 								"nft",
 								"delete",
 								"63969214340bc68467e1c349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all NFTs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/nft/get-all",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"get-all"
 							]
 						}
 					},
