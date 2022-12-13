@@ -27,7 +27,7 @@ nftRoute.put("/create-many", async (req, res) => {
   }
 });
 
-nftRoute.get("/:id", async (req, res) => {
+nftRoute.get("/get/:id", async (req, res) => {
   try {
     log("get nft", req.params.id);
 
@@ -38,13 +38,24 @@ nftRoute.get("/:id", async (req, res) => {
   }
 });
 
-nftRoute.get("/", async (req, res) => {
+nftRoute.get("/get-many", async (req, res) => {
   try {
     log("get many nfts", req.body);
 
     const nfts = await nftModel.find({
       _id: { $in: req.body },
     });
+    res.json(nfts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+nftRoute.get("/get-all", async (req, res) => {
+  try {
+    log("get all nfts");
+
+    const nfts = await nftModel.find({});
     res.json(nfts);
   } catch (err) {
     res.status(500).json(err);
