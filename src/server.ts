@@ -1,4 +1,5 @@
 import { json } from "body-parser";
+import cors from "cors";
 import * as dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -21,6 +22,7 @@ mongoose.connect(config.dbUri, (err) => {
 
 const server = express();
 server.use(json());
+server.use(cors());
 
 server.use("/user", userRoute);
 server.use("/nft", nftRoute);
