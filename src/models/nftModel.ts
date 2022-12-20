@@ -9,4 +9,4 @@ const nftSchema = new mongoose.Schema({
   ownerAddress: { type: String },
 });
 
-export default mongoose.model("NFT", nftSchema);
+export default mongoose.model("NFTs", nftSchema);
