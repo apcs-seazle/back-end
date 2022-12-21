@@ -16,15 +16,19 @@ idMintedRoute.get("/get", async (req,res) =>{
     }
 });
 
-idMintedRoute.put("/create", async(req,res) =>{
-    try {
-        log("create id minted", req.body);
-    
-        const id = await idMintedModel.create(req.body);
-        res.json(id);
-      } catch (err) {
+
+idMintedRoute.post("/update", async(req,res) =>{
+    try{
+        log("update id minted", req.body);
+        const idMinted = await idMintedModel.findByIdAndUpdate("63a1d0b22c029b1c8024846b",req.body,{
+            returnDocument: "after", 
+        });
+        res.json(idMinted);
+    }
+    catch(err)
+    {
         res.status(500).json(err);
-      }
+    }
 });
 
 export default idMintedRoute;
