@@ -5,7 +5,7 @@ const nftSchema = new mongoose.Schema({
   contentUrl: { type: String, required: true },
   description: { type: String },
   idNFT: { type: String, required: true },
-  price: { type: Number },
+  price: { type: String },
   ownerAddress: { type: String },
 });
 

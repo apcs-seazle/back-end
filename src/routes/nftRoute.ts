@@ -38,6 +38,18 @@ nftRoute.get("/get/:id", async (req, res) => {
   }
 });
 
+nftRoute.get("/getNFT/:address", async (req, res) => {
+  try {
+    log("get nft", req.params.address);
+    const nft = await nftModel.find({'ownerAddress':req.params.address});
+    res.json(nft);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 nftRoute.get("/get-many", async (req, res) => {
   try {
     log("get many nfts", req.body);
