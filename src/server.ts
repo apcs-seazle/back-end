@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 import nftRoute from "./routes/nftRoute";
 import userRoute from "./routes/userRoute";
+import nftCreateRoute from "./routes/nftCreateRoute";
 import idMintedRoute from "./routes/idMintedRoute";
 import * as config from "./utils/config";
 import log from "./utils/log";
@@ -27,6 +28,7 @@ server.use(cors());
 
 server.use("/user", userRoute);
 server.use("/nft", nftRoute);
+server.use("/nftCreate", nftCreateRoute);
 server.use("/idMinted", idMintedRoute);
 
 server.listen(config.port, () => {
