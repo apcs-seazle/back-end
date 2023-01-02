@@ -30,6 +30,9 @@ server.use("/user", userRoute);
 server.use("/nft", nftRoute);
 server.use("/nftCreate", nftCreateRoute);
 server.use("/idMinted", idMintedRoute);
+server.get("/", (req, res) => {
+  res.send("Yo yo, let's cook some meth, Mr. White! 🥳");
+});
 
 server.listen(config.port, () => {
   log("server up", config.port);
