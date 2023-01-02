@@ -24,7 +24,7 @@ mongoose.connect(config.dbUri, (err) => {
 
 const server = express();
 server.use(json());
-server.use(cors());
+// server.use(cors());
 
 server.use("/user", userRoute);
 server.use("/nft", nftRoute);
