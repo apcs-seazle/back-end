@@ -3,7 +3,7 @@
   "env": {},
   "builds": [
     {
-      "src": "app/index.ts",
+      "src": "src/server.ts",
       "use": "@vercel/node"
     }
   ],
@@ -33,7 +33,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "app/index.ts"
+      "destination": "src/server.ts"
     }
   ]
 }
