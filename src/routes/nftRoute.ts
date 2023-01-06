@@ -41,14 +41,12 @@ nftRoute.get("/get/:id", async (req, res) => {
 nftRoute.get("/getNFT/:address", async (req, res) => {
   try {
     log("get nft", req.params.address);
-    const nft = await nftModel.find({'ownerAddress':req.params.address});
+    const nft = await nftModel.find({ ownerAddress: req.params.address });
     res.json(nft);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
 
 nftRoute.get("/get-many", async (req, res) => {
   try {
@@ -98,15 +96,15 @@ nftRoute.delete("/delete/:id", async (req, res) => {
   }
 });
 
-nftRoute.post("/search/:text",async (req, res) => {
+nftRoute.post("/search/:text", async (req, res) => {
   try {
     log("search nft", req.params.text);
 
-    const nft = await nftModel.find({$text: {$search: req.params.text}});
+    const nft = await nftModel.find({ $text: { $search: req.params.text } });
     res.json(nft);
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
 
 export default nftRoute;

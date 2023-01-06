@@ -9,4 +9,6 @@ const nftSchema = new mongoose.Schema({
   ownerAddress: { type: String },
 });
 
+nftSchema.index({ name: "text" });
+
 export default mongoose.model("NFTs", nftSchema);

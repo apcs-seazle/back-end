@@ -8,6 +8,4 @@ const nftCreateSchema = new mongoose.Schema({
   ownerAddress: { type: String },
 });
 
-nftCreateSchema.index({name: 'text'})
-
 export default mongoose.model("NFTCreate", nftCreateSchema);
