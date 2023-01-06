@@ -98,4 +98,15 @@ nftRoute.delete("/delete/:id", async (req, res) => {
   }
 });
 
+nftRoute.post("/search/:text",async (req, res) => {
+  try {
+    log("search nft", req.params.text);
+
+    const nft = await nftModel.find({$text: {$search: req.params.text}});
+    res.json(nft);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 export default nftRoute;
