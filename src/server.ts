@@ -8,6 +8,7 @@ import nftRoute from "./routes/nftRoute";
 import userRoute from "./routes/userRoute";
 import nftCreateRoute from "./routes/nftCreateRoute";
 import idMintedRoute from "./routes/idMintedRoute";
+import moneyRoute from "./routes/moneyRoute";
 import * as config from "./utils/config";
 import log from "./utils/log";
 
@@ -30,6 +31,7 @@ server.use("/user", userRoute);
 server.use("/nft", nftRoute);
 server.use("/nftCreate", nftCreateRoute);
 server.use("/idMinted", idMintedRoute);
+server.use("/money",moneyRoute);
 server.get("/", (req, res) => {
   res.send("Yo yo, let's cook some meth, Mr. White! 🥳");
 });
