@@ -78,7 +78,7 @@ nftCreateRoute.post("/update/:id", async (req, res) => {
   try {
     log("update nft", req.params.id, req.body);
 
-    const nft = await nftCreateModel.findOneAndDelete({'idNFT':req.params.id}, {
+    const nft = await nftCreateModel.findByIdAndUpdate(req.params.id, req.body, {
       returnDocument: "after",
     });
     res.json(nft);
@@ -91,7 +91,7 @@ nftCreateRoute.delete("/delete/:id", async (req, res) => {
   try {
     log("delete nft", req.params.id);
 
-    const nft = await nftCreateModel.findByIdAndDelete(req.params.id);
+    const nft = await nftCreateModel.findOneAndDelete({'idNFT':req.params.id});
     res.json(nft);
   } catch (err) {
     res.status(500).json(err);
