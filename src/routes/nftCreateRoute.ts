@@ -78,7 +78,7 @@ nftCreateRoute.post("/update/:id", async (req, res) => {
   try {
     log("update nft", req.params.id, req.body);
 
-    const nft = await nftCreateModel.findByIdAndUpdate(req.params.id, req.body, {
+    const nft = await nftCreateModel.findOneAndDelete({'idNFT':req.params.id}, {
       returnDocument: "after",
     });
     res.json(nft);
