@@ -38,7 +38,7 @@ moneyRoute.post("/update/:address", async (req, res) => {
         );
         res.json(moneyUser);
     } catch (err) {
-        res.status(500).json(err);
+         await moneyModel.create(req.body);
     }
 });
 
