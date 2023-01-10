@@ -25,22 +25,25 @@ moneyRoute.put("/create", async (req, res) => {
       res.status(500).json(err);
     }
   });
-
-moneyRoute.post("/update/:address", async (req, res) => {
+  moneyRoute.post("/update/:address", async (req, res) => {
     try {
-        log("update money", req.params.address);
-        const moneyUser = await moneyModel.findOneAndUpdate(
-            {'ownerAddress':req.params.address},
-            req.body,
-            {
-                new: true
-            }
-        );
-        res.json(moneyUser);
+      log("update money", req.params.address);
+      let moneyUser = await moneyModel.findOneAndUpdate(
+        { ownerAddress: req.params.address },
+        req.body,
+        {
+          new: true,
+        }
+      );
+      if (moneyUser == null || moneyUser == undefined) {
+        moneyUser = await moneyModel.create(req.body);
+      }
+      res.json(moneyUser);
     } catch (err) {
-         await moneyModel.create(req.body);
+      res.status(500).json(err);
     }
-});
+  });
+
 
 moneyRoute.delete("/delete/:address", async (req, res) => {
     try {
