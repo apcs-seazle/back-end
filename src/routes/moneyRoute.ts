@@ -25,6 +25,7 @@ moneyRoute.put("/create", async (req, res) => {
       res.status(500).json(err);
     }
   });
+ 
   moneyRoute.post("/update/:address", async (req, res) => {
     try {
       log("update money", req.params.address);
@@ -36,7 +37,10 @@ moneyRoute.put("/create", async (req, res) => {
         }
       );
       if (moneyUser == null || moneyUser == undefined) {
-        moneyUser = await moneyModel.create(req.body);
+        moneyUser = await moneyModel.create({
+          ...req.body,
+          ownerAddress: req.params.address,
+        });
       }
       res.json(moneyUser);
     } catch (err) {
